@@ -21,6 +21,7 @@ Usage: remote [options] [user] [command...]
 ```yaml
 remote:
   username: john_doe
+  room: room_name
 ```
 
 ## Installation

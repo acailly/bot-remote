@@ -68,7 +68,8 @@ function initialize(vorpal) {
       registerUsername(myIdentity, myUsername);
       showPeerCount();
 
-      room = Room(ipfs, "acailly-bot-remote");
+      const roomName = vorpal.config.remote.room;
+      room = Room(ipfs, roomName);
 
       room.on("peer joined", peer => {
         room.sendTo(
