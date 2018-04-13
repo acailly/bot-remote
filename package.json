@@ -1,0 +1,11 @@
+{
+  "name": "bot-remote",
+  "version": "1.0.0",
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "cross-env": "5.0.5",
+    "ipfs": "^0.28.2",
+    "ipfs-pubsub-room": "^1.2.0",
+    "lodash": "^4.17.5"
+  }
+}
