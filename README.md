@@ -20,6 +20,7 @@ Usage: remote [options] [user] [command...]
 
 ```yaml
 remote:
+  enable: true
   username: john_doe
   room: room_name
 ```

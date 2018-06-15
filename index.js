@@ -5,21 +5,27 @@ const pickBy = require("lodash/pickBy");
 const keys = require("lodash/keys");
 const isEmpty = require("lodash/isEmpty");
 
-module.exports = function(vorpal) {
-  initialize(vorpal);
+module.exports = function (vorpal) {
+  if (vorpal.config.remote.enable) {
+    initialize(vorpal);
+  }
 
   vorpal
     .command("remote [user] [command...]")
     .option("-l, --list", "List all peers")
     .option("-w, --whois <name>", "Show peers with this name")
     .description("Run command on distant bot(s)")
-    .action(function(args, callback) {
-      if (args.options.list) {
-        showPeers();
-      } else if (args.options.whois) {
-        showWhois(args.options.whois);
+    .action(function (args, callback) {
+      if (vorpal.config.remote.enable) {
+        if (args.options.list) {
+          showPeers();
+        } else if (args.options.whois) {
+          showWhois(args.options.whois);
+        } else {
+          remoteCommand(args.command.join(" "), args.user);
+        }
       } else {
-        remoteCommand(args.command.join(" "), args.user);
+        console.log('remote command is not enabled - set the config remote.enable to true in config.yaml')
       }
 
       callback();
